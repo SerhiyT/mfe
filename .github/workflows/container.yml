@@ -8,10 +8,10 @@ on:
       - 'packages/container/**'
   workflow_dispatch:
     inputs:
-      environment:
-        description: 'Environment to run tests against'
-        type: environment
+      env_name:
+        description: Name of the environment to deploy to.
         required: true
+        default: testing
 
 defaults:
   run:
