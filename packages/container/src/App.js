@@ -5,7 +5,7 @@ import Header from './components/Header';
 import MarketingApp from './components/MarketingApp'
 
 const generateClassName = createGenerateClassName({
-  productionPrefix: 'co',
+  productionPrefix: 'co', // when start prod, generate classNames with prefix "co" instead "jss"
 })
 
 export default () => {
