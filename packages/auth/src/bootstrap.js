@@ -4,7 +4,7 @@ import App from './App';
 import { createMemoryHistory, createBrowserHistory } from 'history';
 
 // Mount function to start up the app
-const mount = (el, { onNavigate, defaultHistory, initialPath }) => {
+const mount = (el, { onSignIn, onNavigate, defaultHistory, initialPath }) => {
   // createMemoryHistory - creates an in-memory history object that does not interact with the browser URL.
   //           This is useful when you need to customize the history used for server-side rendering
   //           When we click on link, memory history will be updated and automaticaly call onNavigate
@@ -17,7 +17,7 @@ const mount = (el, { onNavigate, defaultHistory, initialPath }) => {
     history.listen(onNavigate); // whenever URL changes automaticaly call onNavigate 
   }
 
-  ReactDOM.render(<App history={history}/>, el);
+  ReactDOM.render(<App onSignIn={onSignIn} history={history}/>, el);
 
   return {
     onParentNavigate({ pathname: nextPathname }) {
