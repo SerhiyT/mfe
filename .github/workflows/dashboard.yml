@@ -6,6 +6,12 @@ on:
       - master
     paths:
       - 'packages/dashboard/**'
+  workflow_dispatch:
+    inputs:
+      env_name:
+        description: Name of the environment to deploy to.
+        required: true
+        default: testing
 
 defaults:
   run:
