@@ -8,7 +8,7 @@ const mount = (el, { onNavigate, defaultHistory, initialPath }) => {
   // createMemoryHistory - creates an in-memory history object that does not interact with the browser URL.
   //           This is useful when you need to customize the history used for server-side rendering
   //           When we click on link, memory history will be updated and automaticaly call onNavigate
-  // defaultHistory - If we are in development and in isolation using navigations inside "marketing" for ex.
+  // defaultHistory - If we are in development and in isolation using navigations inside "auth" for ex.
   const history = defaultHistory || createMemoryHistory({
     initialEntries: [initialPath]
   });
@@ -33,7 +33,7 @@ const mount = (el, { onNavigate, defaultHistory, initialPath }) => {
 // If we are in development and in isolation,
 // call mount immediately
 if (process.env.NODE_ENV === 'development') {
-  const devRoot = document.querySelector('#_marketing-dev-root');
+  const devRoot = document.querySelector('#_auth-dev-root');
 
   if (devRoot) {
     mount(devRoot, { defaultHistory: createBrowserHistory() });

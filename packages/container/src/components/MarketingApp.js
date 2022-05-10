@@ -9,6 +9,7 @@ export default () => {
 
   useEffect(() => {
    const { onParentNavigate } = mount(ref.current, { // onParentNavigate - path from the mount child App
+     initialPath: history.location.pathname, // application current pathname / Adding Initial State to Memory History
      onNavigate: ({ pathname: nextPathname }) => { // onNavigate - Container navigation in Marketing
       const { pathname } = history.location;
 

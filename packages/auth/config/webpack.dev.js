@@ -9,13 +9,10 @@ const packageJson = require('../package.json')
 const plugins = () => {
   const configPlugins = [
     new ModuleFederationPlugin({
-      name: 'container', // Not used. Only needed for Remotes
-      remotes: {  // Lists projects that the Container can search to fet additional code / key's are names of diff modules 
-        // marketing in brackets related to the 'name' property in the Marketing webpack.config.js (Marketing)
-        // @http://localhost:8081/remoteEntry.js - URL for the remoteEntry file (marketing)
-        // @http://localhost:8082/remoteEntry.js - URL for the remoteEntry file (auth)
-        marketing: 'marketing@http://localhost:8081/remoteEntry.js',
-        auth: 'auth@http://localhost:8082/remoteEntry.js',
+      name: 'auth', // like a global varible when load script loads up inside a container
+      filename: 'remoteEntry.js', // Sets the name of the mainfest file. Leave it as 'remoteEntry.js' unless you've got a good reason to change it
+      exposes: {
+        './AuthApp': './src/bootstrap', // Aliases filenames
       },
       shared: packageJson.dependencies,
     }),
@@ -29,10 +26,10 @@ const plugins = () => {
 const devConfig = {
   mode: 'development',
   output: {
-    publicPath: 'http://localhost:8080/',
+    publicPath: 'http://localhost:8082/',
   },
   devServer: {
-    port: 8080,
+    port: 8082,
     historyApiFallback: {
       index: 'index.html',
     },
