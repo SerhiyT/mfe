@@ -10,7 +10,7 @@ const AuthLazy = lazy(() => import('./components/AuthApp'));
 
 
 const generateClassName = createGenerateClassName({
-  productionPrefix: 'co', // when start prod, generate classNames with prefix "co" instead "jss"
+  productionPrefix: 'co', // when start prod, generate classNames with prefix "co" instead "jss".
 })
 
 export default () => {

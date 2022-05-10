@@ -6,7 +6,7 @@ import Landing from './components/Landing';
 import Pricing from './components/Pricing';
 
 const generateClassName = createGenerateClassName({
-  productionPrefix: 'ma', // when start prod, generate classNames with prefix "ma" instead "jss"
+  productionPrefix: 'ma', // when start prod, generate classNames with prefix "ma" instead "jss".
 })
 
 export default ({ history }) => {
