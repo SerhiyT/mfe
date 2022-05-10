@@ -3,18 +3,15 @@ const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPl
 const commonConfig = require('./webpack.common');
 const packageJson = require('../package.json');
 
-const domain = process.env.PRODUCTION_DOMAIN;
-
 // ======================================== plugins ===================================
 
 const plugins = () => {
   const configPlugins = [
     new ModuleFederationPlugin({
-      name: 'container',
-      remotes: {
-        marketing: `marketing@${domain}/marketing/latest/remoteEntry.js`,
-        auth: `auth@${domain}/auth/latest/remoteEntry.js`,
-        dashboard: `dashboard@${domain}/dashboard/latest/remoteEntry.js`,
+      name: 'dashboard',
+      filename: 'remoteEntry.js', // Sets the name of the mainfest file. Leave it as 'remoteEntry.js' unless you've got a good reason to change it
+      exposes: {
+        './DashboardApp': './src/bootstrap', // Aliases filenames
       },
       shared: packageJson.dependencies,
     }),
@@ -29,7 +26,7 @@ const prodConfig = {
   mode: 'production',
   output: {
     filename: '[name].[contenthash].js',
-    publicPath: '/container/latest/'
+    publicPath: '/dashboard/latest/',
   },
   plugins: plugins(),
 };
