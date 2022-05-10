@@ -1,5 +1,3 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-
 // ======================================== babelOptions ===================================
 
 const babelOptions = (preset) => {
@@ -13,18 +11,6 @@ const babelOptions = (preset) => {
   }
 
   return opts;
-};
-
-// ======================================== plugins ===================================
-
-const plugins = () => {
-  const configPlugins = [
-    new HtmlWebpackPlugin({
-      template: './public/index.html',
-    }),
-  ];
-
-  return configPlugins;
 };
 
 // ======================================== module.exports ===================================
@@ -42,5 +28,4 @@ module.exports = {
       },
     ],
   },
-  plugins: plugins(),
 };

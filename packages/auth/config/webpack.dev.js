@@ -1,5 +1,6 @@
 const { merge } = require('webpack-merge');  // merge - for merge together webpack.config files (commonConfig, devConfig)
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin")
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const commonConfig = require('./webpack.common');
 const packageJson = require('../package.json')
@@ -15,6 +16,9 @@ const plugins = () => {
         './AuthApp': './src/bootstrap', // Aliases filenames
       },
       shared: packageJson.dependencies,
+    }),
+    new HtmlWebpackPlugin({
+      template: './public/index.html',
     }),
   ];
 
